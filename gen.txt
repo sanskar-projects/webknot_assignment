@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz Game</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        #question {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Quiz Game</h1>
+    <div id="quiz-container"></div>
+    <button id="submit-btn">Submit Answer</button>
+    <p id="result"></p>
+
+    <script>
+        const quizData = {
+            "response_code": 0,
+            "results": [
+                // Your JSON data here (already provided)
+                {"type":"multiple","difficulty":"medium","category":"Entertainment: Music","question":"Which novelty band was best known for their UK chart hits &quot;Combine Harvester&quot; and &quot;I Am a Cider Drinker&quot; in 1976?","correct_answer":"The Wurzels","incorrect_answers":["Goldie Lookin Chain","Bonzo Dog Doo-Dah Band","The Firm"]},{"type":"multiple","difficulty":"easy","category":"Science &amp; Nature","question":"Which Apollo mission was the first one to land on the Moon?","correct_answer":"Apollo 11","incorrect_answers":["Apollo 10","Apollo 9","Apollo 13"]},{"type":"multiple","difficulty":"medium","category":"Entertainment: Video Games","question":"Which character does the player play as in the video game &quot;Bastion&quot;?","correct_answer":"The Kid","incorrect_answers":["Rucks","Zulf","Zia"]},{"type":"multiple","difficulty":"medium","category":"Entertainment: Music","question":"In what year was Tchaikovsky&#039;s 1812 Overture composed?","correct_answer":"1880","incorrect_answers":["1812","1790","1840"]},{"type":"multiple","difficulty":"medium","category":"Entertainment: Video Games","question":"In what year was Pok&eacute;mon Diamond &amp; Pearl released in Japan?","correct_answer":"2006","incorrect_answers":["2009","2007","2008"]},{"type":"multiple","difficulty":"medium","category":"Entertainment: Video Games","question":"This weapon in Counter-Strike: Global Offensive does not exist in real life.","correct_answer":"M4A4","incorrect_answers":["AWP","M4A1","MP9"]},{"type":"multiple","difficulty":"medium","category":"History","question":"The Tsar Bomba, the most powerful nuclear bomb ever tested, had a yield of 50 megatons but theoretically had a maximum yield of how much?","correct_answer":"100 Megatons","incorrect_answers":["200 Megatons","75 Megatons","150 Megatons"]},{"type":"multiple","difficulty":"easy","category":"Entertainment: Film","question":"What was Dorothy&#039;s surname in &#039;The Wizard Of Oz&#039;?","correct_answer":"Gale","incorrect_answers":["Perkins","Day","Parker"]},{"type":"multiple","difficulty":"medium","category":"Entertainment: Film","question":"In the film &quot;Requiem for a Dream&quot;, what drug does Jared Leto&#039;s character get addicted to?","correct_answer":"Heroin","incorrect_answers":["Cocaine","Marijuana","Oxycodone"]},{"type":"multiple","difficulty":"medium","category":"Entertainment: Music","question":"What country did Shirley Bassey originate from?","correct_answer":"Wales","incorrect_answers":["America","England","Canada"]}
+            ]
+        };
+
+        const quizContainer = document.getElementById('quiz-container');
+        const submitBtn = document.getElementById('submit-btn');
+        const resultPara = document.getElementById('result');
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function displayQuestion() {
+            const question = quizData.results[currentQuestion];
+
+            quizContainer.innerHTML = `
+                <p id="question">${question.question}</p>
+                <ul id="answer-list">
+                    </ul>
+            `;
+
+            const answerList = document.getElementById('answer-list');
+            question.incorrect_answers.forEach(answer => {
+                const radio = document.createElement('li');
+                radio.innerHTML = `
+                    <input type="radio" name="answer" value="${answer}">
+                    <label for="answer">${answer}</label>
+                `;
+                answerList.appendChild(radio);
+            });
+
+            const correctRadio = document.createElement('li');
+            correctRadio.innerHTML = `
+                <input type="radio" name="answer" value="${question.correct_answer}">
+                <label for="answer">${question.correct_answer}</label>
+            `;
+            answerList.appendChild(correctRadio);
+        }
+
+        function checkAnswer() {
+            const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            if (selectedAnswer) {
+                if (selectedAnswer.value === quizData.results[currentQuestion].correct_answer) {
+                    score++;
+                    resultPara.textContent = `Correct! Your score is ${score} out of ${quizData.results.length}`;
+                } else {
+                    resultPara.textContent = `Incorrect. The correct answer is ${quizData.results[currentQuestion].correct_answer}`;
+                }
+                currentQuestion++;
+                submitBtn.disabled = true;
+            } else {
+                alert('Please select an answer before submitting.');
+            }
+        }
+
+        function checkGameOver() {
+            if (currentQuestion === quizData.results.length) {
+                resultPara.textContent = `Quiz completed! Your final score is ${score} out of ${quizData.results.length}`;
+                submitBtn.style.display = 'none';
+                return true;
+            }
+            return false;
+        }
+
+        displayQuestion();
+
+        submitBtn.addEventListener('click', () => {
+            checkAnswer();
+            if (!checkGameOver()) {
+                displayQuestion();
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
