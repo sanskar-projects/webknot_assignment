@@ -1,1 +1,36 @@
-
+const fetchData=async()=>
+{
+document.getElementById("image").src="";
+var s="CONNECTING";
+document.getElementById("title").innerHTML=s;
+document.getElementById("explanation").innerHTML=s;
+document.getElementById("date").innerHTML=s;
+const url="https://api.nasa.gov/planetary/apod?api_key=";
+const api_key=document.getElementById("api_key").value;
+const date="&date="+document.getElementById("date_in").value;
+const response=await fetch(`${url}${api_key}${date}`);
+const _data= await response.json();
+if(_data.msg)
+{
+alert(_data.msg);
+display();
+return;
+}
+if(!_data.date)
+{
+alert("CONNECTION FAILED");
+display();
+return;
+}
+data={};
+data=Object.assign({},data,_data);
+display();
+}
+function display()
+{
+document.getElementById("image").src=data.hdurl;
+document.getElementById("imageLINK").href=data.hdurl;
+document.getElementById("title").innerHTML=data.title;
+document.getElementById("explanation").innerHTML=data.explanation;
+document.getElementById("date").innerHTML="["+data.date+"]";
+}
