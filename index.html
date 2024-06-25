@@ -12,7 +12,10 @@ display();
 }
 function display()
 {
-document.getElementById("1").innerHTML=data;
+var s="";
+s+=data.results[0].question;
+document.getElementById("1").innerHTML=s;
+
 }
 </script>
 <h1 id="1"></h1>
