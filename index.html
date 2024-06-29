@@ -3,6 +3,9 @@
 <script>
 var data={}
 var i;
+var correct_answer="";
+var a=[];
+
 const fetchData=async()=>
 {
 i=0;
@@ -24,13 +27,22 @@ s+=(i+1);
 s+="<br>";
 s+=data.results[i].question;
 s+="<br>";
-s+=data.results[i].correct_answer;
 s+="<br>incorrect<br>";
-s+=data.results[i].incorrect_answers[0];
+
+correct_answer==data.results[i].correct_answer;
+a.push(data.results[i].correct_answer);
+a.push(data.results[i].incorrect_answers[0]);
+a.push(data.results[i].incorrect_answers[1]);
+a.push(data.results[i].incorrect_answers[2]);
+a=a.sort(()=>Math.random()-0.5);
+
+s+=a[0];
 s+="<br>";
-s+=data.results[i].incorrect_answers[1];
+s+=a[1];
 s+="<br>";
-s+=data.results[i].incorrect_answers[2];
+s+=a[2];
+s+="<br>";
+s+=a[3];
 document.getElementById("1").innerHTML=s;
 }
 }
