@@ -35,6 +35,14 @@ a.push(data.results[i].incorrect_answers[0]);
 a.push(data.results[i].incorrect_answers[1]);
 a.push(data.results[i].incorrect_answers[2]);
 a=a.sort(()=>Math.random()-0.5);
+document.getElementById("o1").innerHTML=a[0];
+document.getElementById("o1").value=a[0];
+document.getElementById("o2").innerHTML=a[1];
+document.getElementById("o2").value=a[1];
+document.getElementById("o3").innerHTML=a[2];
+document.getElementById("o3").value=a[2];
+document.getElementById("o4").innerHTML=a[3];
+document.getElementById("o4").value=a[3];
 
 s+=a[0];
 s+="<br>";
