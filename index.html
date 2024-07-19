@@ -29,6 +29,8 @@ if(i<=n-1)
 document.getElementById("q").innerHTML=(i+1)+") "+data.results[i].question;
 
 correct_answer=data.results[i].correct_answer;
+
+a=[];
 a.push(data.results[i].correct_answer);
 a.push(data.results[i].incorrect_answers[0]);
 a.push(data.results[i].incorrect_answers[1]);
