@@ -22,12 +22,7 @@ function display()
 {
 if(i<=n-1)
 {
-var s="";
-s+=(i+1);
-s+="<br>";
-s+=data.results[i].question;
-s+="<br>";
-s+="<br>incorrect<br>";
+document.getElementById("q").innerHTML=(i+1)+") "+data.results[i].question;
 
 correct_answer=data.results[i].correct_answer;
 a.push(data.results[i].correct_answer);
@@ -44,14 +39,9 @@ document.getElementById("r3").value=a[2];
 document.getElementById("o4").innerHTML=a[3];
 document.getElementById("r4").value=a[3];
 
-s+=a[0];
-s+="<br>";
-s+=a[1];
-s+="<br>";
-s+=a[2];
-s+="<br>";
-s+=a[3];
-document.getElementById("1").innerHTML=s;
+
+
+
 }
 }
 
@@ -61,8 +51,23 @@ i+=1;
 display();
 }
 
+function check()
+{
+input=document.getElementByName("r");
+if(input==correct_answer)
+{
+document.getElementById("output").innerHTML="correct";
+}
+else
+{
+document.getElementById("output").innerHTML="incorrect";
+}
+}
+setInterval(check,500);
+
 </script>
-<h1 id="1"></h1>
+<span id="q"></span><br>
+
 <span id="o1"></span><br>
 <input type="radio" id="r1" name="r"><br>
 <span id="o2"></span><br>
