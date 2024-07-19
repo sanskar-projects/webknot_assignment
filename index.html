@@ -5,6 +5,10 @@ var data={}
 var i;
 var correct_answer="";
 var a=[];
+o1=document.getElementById("o1");
+o2=document.getElementById("o2");
+o3=document.getElementById("o3");
+o4=document.getElementById("o4");
 
 const fetchData=async()=>
 {
@@ -51,9 +55,15 @@ i+=1;
 display();
 }
 
-function check()
+function check(x)
 {
-input=document.getElementByName("r");
+input="";
+
+if(x==1){input=o1.value;}
+if(x==2){input=o2.value;}
+if(x==3){input=o3.value;}
+if(x==4){input=o4.value;}
+
 if(input==correct_answer)
 {
 document.getElementById("output").innerHTML="correct";
@@ -63,21 +73,24 @@ else
 document.getElementById("output").innerHTML="incorrect";
 }
 }
+
 setInterval(check,500);
 
 </script>
 <span id="q"></span><br>
 
 <span id="o1"></span><br>
-<input type="radio" id="r1" name="r"><br>
+<input type="radio" id="r1" name="r" onclick="check(1);"><br>
 <span id="o2"></span><br>
-<input type="radio" id="r2" name="r"><br>
+<input type="radio" id="r2" name="r" onclick="check(2);"><br>
 <span id="o3"></span><br>
-<input type="radio" id="r3" name="r"><br>
+<input type="radio" id="r3" name="r" onclick="check(3);"><br>
 <span id="o4"></span><br>
-<input type="radio" id="r4" name="r"><br>
+<input type="radio" id="r4" name="r" onclick="check(4);"><br>
 
 <button onclick="fetchData();">click</button>
-<button onclick="next();">next</button>
+<button onclick="next();">next</button><br>
+
+<span id="output"></span>
 </body>
 </html>
