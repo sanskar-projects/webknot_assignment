@@ -36,13 +36,13 @@ a.push(data.results[i].incorrect_answers[1]);
 a.push(data.results[i].incorrect_answers[2]);
 a=a.sort(()=>Math.random()-0.5);
 document.getElementById("o1").innerHTML=a[0];
-document.getElementById("o1").value=a[0];
+document.getElementById("r1").value=a[0];
 document.getElementById("o2").innerHTML=a[1];
-document.getElementById("o2").value=a[1];
+document.getElementById("r2").value=a[1];
 document.getElementById("o3").innerHTML=a[2];
-document.getElementById("o3").value=a[2];
+document.getElementById("r3").value=a[2];
 document.getElementById("o4").innerHTML=a[3];
-document.getElementById("o4").value=a[3];
+document.getElementById("r4").value=a[3];
 
 s+=a[0];
 s+="<br>";
@@ -63,10 +63,14 @@ display();
 
 </script>
 <h1 id="1"></h1>
-<input type="radio" id="o1" name="o"><br>
-<input type="radio" id="o2" name="o"><br>
-<input type="radio" id="o3" name="o"><br>
-<input type="radio" id="o4" name="o"><br>
+<span id="o1"></span><br>
+<input type="radio" id="r1" name="r"><br>
+<span id="o2"></span><br>
+<input type="radio" id="r2" name="r"><br>
+<span id="o3"></span><br>
+<input type="radio" id="r3" name="r"><br>
+<span id="o4"></span><br>
+<input type="radio" id="r4" name="r"><br>
 
 <button onclick="fetchData();">click</button>
 <button onclick="next();">next</button>
