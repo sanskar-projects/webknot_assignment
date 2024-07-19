@@ -61,10 +61,10 @@ function check(x)
 {
 input="";
 
-if(x==1){input=o1.value;}
-if(x==2){input=o2.value;}
-if(x==3){input=o3.value;}
-if(x==4){input=o4.value;}
+if(o1.checked==true){input=o1.value;}
+if(o2.checked==true){input=o2.value;}
+if(o3.checked==true){input=o3.value;}
+if(o4.checked==true){input=o4.value;}
 
 if(input==correct_answer)
 {
@@ -74,19 +74,21 @@ else
 {
 document.getElementById("output").innerHTML="incorrect";
 }
+
+
 }
 
 </script>
 <span id="q"></span><br>
 
 <span id="o1"></span><br>
-<input type="radio" id="r1" name="r" onclick="check(1);"><br>
+<input type="radio" id="r1" name="r" onclick="check();"><br>
 <span id="o2"></span><br>
-<input type="radio" id="r2" name="r" onclick="check(2);"><br>
+<input type="radio" id="r2" name="r" onclick="check();"><br>
 <span id="o3"></span><br>
-<input type="radio" id="r3" name="r" onclick="check(3);"><br>
+<input type="radio" id="r3" name="r" onclick="check();"><br>
 <span id="o4"></span><br>
-<input type="radio" id="r4" name="r" onclick="check(4);"><br>
+<input type="radio" id="r4" name="r" onclick="check();"><br>
 
 <button onclick="fetchData();">click</button>
 <button onclick="next();">next</button><br>
