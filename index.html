@@ -5,10 +5,6 @@ var data={}
 var i;
 var correct_answer="";
 var a=[];
-var r1=document.getElementById("r1");
-var r2=document.getElementById("r2");
-var r3=document.getElementById("r3");
-var r4=document.getElementById("r4");
 
 const fetchData=async()=>
 {
@@ -60,6 +56,11 @@ display();
 function check()
 {
 input="";
+
+var r1=document.getElementById("r1");
+var r2=document.getElementById("r2");
+var r3=document.getElementById("r3");
+var r4=document.getElementById("r4");
 
 if(r1.checked==true){input=r1.value;}
 if(r2.checked==true){input=r2.value;}
