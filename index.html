@@ -6,6 +6,8 @@ var i;
 var correct_answer="";
 var a=[];
 var score=0;
+var lock=false;
+
 
 const fetchData=async()=>
 {
@@ -53,6 +55,7 @@ document.getElementById("r2").checked=false;
 document.getElementById("r3").checked=false;
 document.getElementById("r4").checked=false;
 document.getElementById("output").innerHTML="";
+lock=false;
 display();
 }
 else
@@ -62,6 +65,8 @@ else
 }
 
 function check()
+{
+if(lock==false)
 {
 input="";
 
@@ -84,8 +89,8 @@ if(input!=correct_answer&&input!="")
 {
 document.getElementById("output").innerHTML="incorrect";
 }
-
-
+lock="true";
+}
 }
 
 </script>
