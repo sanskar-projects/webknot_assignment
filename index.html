@@ -60,7 +60,7 @@ display();
 }
 else
 {
-;
+result();
 }
 }
 
@@ -68,13 +68,25 @@ function check()
 {
 if(lock==false)
 {
-input="";
-
+var o1=document.getElementById("o1");
+var o2=document.getElementById("o2");
+var o3=document.getElementById("o3");
+var o4=document.getElementById("o4");
 var r1=document.getElementById("r1");
 var r2=document.getElementById("r2");
 var r3=document.getElementById("r3");
 var r4=document.getElementById("r4");
 
+o1.style.backgroundColor="red";
+o2.style.backgroundColor="red";
+o3.style.backgroundColor="red";
+o4.style.backgroundColor="red";
+if(r1.value==correct_answer){o1.style.backgroundColor="green";}
+if(r2.value==correct_answer){o2.style.backgroundColor="green";}
+if(r3.value==correct_answer){o3.style.backgroundColor="green";}
+if(r4.value==correct_answer){o4.style.backgroundColor="green";}
+
+input="";
 if(r1.checked==true){input=r1.value;}
 if(r2.checked==true){input=r2.value;}
 if(r3.checked==true){input=r3.value;}
@@ -85,12 +97,14 @@ if(input==correct_answer)
 document.getElementById("output").innerHTML="correct";
 score+=1;
 }
-if(input!=correct_answer&&input!="")
-{
-document.getElementById("output").innerHTML="incorrect";
-}
+
 lock="true";
 }
+}
+
+function result()
+{
+document.getElementById("score").innerHTML=score+"/"+n;
 }
 
 </script>
@@ -109,6 +123,6 @@ lock="true";
 <button onclick="check();">submit</button>
 <button onclick="next();">next</button><br>
 
-<span id="output"></span>
+<span id="score"></span>
 </body>
 </html>
