@@ -77,20 +77,34 @@ var r2=document.getElementById("r2");
 var r3=document.getElementById("r3");
 var r4=document.getElementById("r4");
 
+input="";
+if(r1.checked==true)
+{
+input=r1.value;
 o1.style.backgroundColor="red";
+}
+if(r2.checked==true)
+{
+input=r2.value;
 o2.style.backgroundColor="red";
+}
+if(r3.checked==true)
+{
+input=r3.value;
 o3.style.backgroundColor="red";
+}
+if(r4.checked==true)
+{
+input=r4.value;
 o4.style.backgroundColor="red";
+}
+
 if(r1.value==correct_answer){o1.style.backgroundColor="green";}
 if(r2.value==correct_answer){o2.style.backgroundColor="green";}
 if(r3.value==correct_answer){o3.style.backgroundColor="green";}
 if(r4.value==correct_answer){o4.style.backgroundColor="green";}
 
-input="";
-if(r1.checked==true){input=r1.value;}
-if(r2.checked==true){input=r2.value;}
-if(r3.checked==true){input=r3.value;}
-if(r4.checked==true){input=r4.value;}
+
 
 if(input==correct_answer)
 {
