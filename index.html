@@ -5,6 +5,7 @@ var data={}
 var i;
 var correct_answer="";
 var a=[];
+var score=0;
 
 const fetchData=async()=>
 {
@@ -20,8 +21,7 @@ display();
 
 function display()
 {
-if(i<=n-1)
-{
+
 document.getElementById("q").innerHTML=(i+1)+") "+data.results[i].question;
 
 correct_answer=data.results[i].correct_answer;
@@ -42,9 +42,10 @@ document.getElementById("o4").innerHTML=a[3];
 document.getElementById("r4").value=a[3];
 
 }
-}
 
 function next()
+{
+if(i<=n-1)
 {
 i+=1;
 document.getElementById("r1").checked=false;
@@ -53,6 +54,11 @@ document.getElementById("r3").checked=false;
 document.getElementById("r4").checked=false;
 document.getElementById("output").innerHTML="";
 display();
+}
+else
+{
+;
+}
 }
 
 function check()
@@ -72,6 +78,7 @@ if(r4.checked==true){input=r4.value;}
 if(input==correct_answer)
 {
 document.getElementById("output").innerHTML="correct";
+score+=1;
 }
 if(input!=correct_answer&&input!="")
 {
