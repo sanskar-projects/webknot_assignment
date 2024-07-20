@@ -5,10 +5,7 @@ var data={}
 var i;
 var correct_answer="";
 var a=[];
-var o1=document.getElementById("o1");
-var o2=document.getElementById("o2");
-var o3=document.getElementById("o3");
-var o4=document.getElementById("o4");
+
 
 const fetchData=async()=>
 {
@@ -60,7 +57,10 @@ display();
 function check()
 {
 input="";
-
+var o1=document.getElementById("o1");
+var o2=document.getElementById("o2");
+var o3=document.getElementById("o3");
+var o4=document.getElementById("o4");
 if(o1.checked==true){input=o1.value;}
 if(o2.checked==true){input=o2.value;}
 if(o3.checked==true){input=o3.value;}
