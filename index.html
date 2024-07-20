@@ -41,9 +41,6 @@ document.getElementById("r3").value=a[2];
 document.getElementById("o4").innerHTML=a[3];
 document.getElementById("r4").value=a[3];
 
-check();
-
-
 }
 }
 
@@ -71,11 +68,12 @@ if(r2.checked==true){input=r2.value;}
 if(r3.checked==true){input=r3.value;}
 if(r4.checked==true){input=r4.value;}
 
+document.getElementById("output").innerHTML="";
 if(input==correct_answer)
 {
 document.getElementById("output").innerHTML="correct";
 }
-else
+if(input!=correct_answer&&input!="")
 {
 document.getElementById("output").innerHTML="incorrect";
 }
@@ -87,15 +85,16 @@ document.getElementById("output").innerHTML="incorrect";
 <span id="q"></span><br>
 
 <span id="o1"></span><br>
-<input type="radio" id="r1" name="r" onclick="check();"><br>
+<input type="radio" id="r1" name="r"><br>
 <span id="o2"></span><br>
-<input type="radio" id="r2" name="r" onclick="check();"><br>
+<input type="radio" id="r2" name="r"><br>
 <span id="o3"></span><br>
-<input type="radio" id="r3" name="r" onclick="check();"><br>
+<input type="radio" id="r3" name="r"><br>
 <span id="o4"></span><br>
-<input type="radio" id="r4" name="r" onclick="check();"><br>
+<input type="radio" id="r4" name="r"><br>
 
 <button onclick="fetchData();">click</button>
+<button onclick="check();"submit</button>
 <button onclick="next();">next</button><br>
 
 <span id="output"></span>
