@@ -3,11 +3,11 @@
 <script>
 var data={}
 var i;
+var n;
 var correct_answer="";
 var a=[];
 var score=0;
 var lock=false;
-
 
 const fetchData=async()=>
 {
@@ -47,8 +47,9 @@ document.getElementById("r4").value=a[3];
 
 function next()
 {
-if(i<n)
+if(i<n-1)
 {
+i+=1;
 document.getElementById("r1").checked=false;
 document.getElementById("r2").checked=false;
 document.getElementById("r3").checked=false;
@@ -61,7 +62,6 @@ document.getElementById("o4").style.backgroundColor="white";
 
 lock=false;
 display();
-i+=1;
 }
 
 else{result();}
