@@ -14,7 +14,9 @@ const fetchData=async()=>
 i=0;
 n=5;
 
-const response=await fetch(`https://opentdb.com/api.php?amount=5&type=multiple`);
+var category=document.querySelector("category").value;
+
+const response=await fetch(https://opentdb.com/api.php?amount=5&type=multiple&category=${category}");
 const _data= await response.json();
 data={};
 data=Object.assign({},data,_data);
@@ -124,6 +126,35 @@ document.getElementById("score").innerHTML=score+"/"+n;
 }
 
 </script>
+<select id="category">
+<option value="">any</option><br>
+<option value="9">GK</option><br>
+<option value="10">books</option><br>
+<option value="11"></option><br>
+<option value="12"></option><br>
+<option value="13"></option><br>
+<option value="14"></option><br>
+<option value="15"></option><br>
+<option value="16"></option><br>
+<option value="17"></option><br>
+<option value="18"></option><br>
+<option value="19"></option><br>
+<option value="20"></option><br>
+<option value="21"></option><br>
+<option value="22"></option><br>
+<option value="23"></option><br>
+<option value="24"></option><br>
+<option value="25"></option><br>
+<option value="26"></option><br>
+<option value="27"></option><br>
+<option value="28"></option><br>
+<option value="29"></option><br>
+<option value="30"></option><br>
+<option value="31"></option><br>
+<option value="32"></option><br>
+</select>
+
+
 <span id="q"></span><br>
 
 <span id="o1"></span><br>
