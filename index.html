@@ -20,7 +20,7 @@ var difficulty=document.querySelector("#difficuty").value;
 alert(difficulty);
 var url="https://opentdb.com/api.php?amount="+n+"&type=multiple";
 
-const response=await fetch(url+"&category="+category+"&difficulty"+difficulty);
+const response=await fetch(url+"&category="+category+"&difficulty="+difficulty);
 const _data= await response.json();
 data={};
 data=Object.assign({},data,_data);
