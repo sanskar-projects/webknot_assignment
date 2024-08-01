@@ -15,11 +15,12 @@ i=0;
 n=document.getElementById("n").value;
 
 
-const category=document.querySelector("#category").value;
-alert(n);
+var category=document.querySelector("#category").value;
+var difficulty=document.querySelector("#difficuty").value;
+alert(difficulty);
 var url="https://opentdb.com/api.php?amount="+n+"&type=multiple";
 
-const response=await fetch(url+"&category="+category);
+const response=await fetch(url+"&category="+category+"&difficulty"+difficulty);
 const _data= await response.json();
 data={};
 data=Object.assign({},data,_data);
@@ -156,6 +157,11 @@ document.getElementById("score").innerHTML=score+"/"+n;
 <option value="30"></option><br>
 <option value="31"></option><br>
 <option value="32"></option><br>
+</select><br>
+<select id="difficulty">
+<option value="easy">easy</option><br>
+<option value="medium">medium</option><br>
+<option value="hard">hard</option><br>
 </select><br>
 <button onclick="fetchData();">click</button><br>
 
