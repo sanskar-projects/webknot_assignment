@@ -14,8 +14,9 @@ const fetchData=async()=>
 i=0;
 n=document.getElementById("n").value;
 
+
 const category=document.querySelector("#category").value;
-alert(category);
+alert(n);
 var url="https://opentdb.com/api.php?amount="+n+"&type=multiple";
 
 const response=await fetch(url+"&category="+category);
