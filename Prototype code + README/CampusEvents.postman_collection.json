@@ -1,0 +1,110 @@
+{
+  "info": {
+    "name": "Campus Event Management API",
+    "_postman_id": "c7a1b1b6-9e33-4a1c-93b7-123456789abc",
+    "description": "Postman collection for Campus Event Management Flask API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Home",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/"
+      }
+    },
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"college_id\": 1,\n  \"title\": \"Hackathon 2025\",\n  \"event_type\": \"Hackathon\",\n  \"date\": \"2025-09-20\",\n  \"description\": \"48-hour coding marathon\"\n}"
+        },
+        "url": "{{base_url}}/events"
+      }
+    },
+    {
+      "name": "Add Student",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"college_id\": 1,\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\"\n}"
+        },
+        "url": "{{base_url}}/students"
+      }
+    },
+    {
+      "name": "Register Student for Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"student_id\": 1\n}"
+        },
+        "url": "{{base_url}}/events/1/register"
+      }
+    },
+    {
+      "name": "Mark Attendance",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"registration_id\": 1,\n  \"status\": \"Present\"\n}"
+        },
+        "url": "{{base_url}}/attendance/mark"
+      }
+    },
+    {
+      "name": "Submit Feedback",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"registration_id\": 1,\n  \"rating\": 5,\n  \"comments\": \"Amazing event!\"\n}"
+        },
+        "url": "{{base_url}}/feedback"
+      }
+    },
+    {
+      "name": "Event Popularity Report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/reports/event-popularity"
+      }
+    },
+    {
+      "name": "Student Participation Report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/reports/student-participation/1"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5000"
+    }
+  ]
+}

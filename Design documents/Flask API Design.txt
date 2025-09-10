@@ -1,0 +1,33 @@
+🌐 Flask API Design
+
+We’ll expose REST APIs grouped by functionality:
+
+Event Management (Admin)
+
+POST /events → Create a new event.
+
+GET /events?college_id={id} → List events for a college.
+
+Student Registration
+
+POST /students → Register a student.
+
+POST /events/<event_id>/register → Register a student for an event.
+
+Attendance
+
+POST /attendance/mark → Mark attendance for a student (by registration_id).
+
+Feedback
+
+POST /feedback → Submit feedback (rating + comments).
+
+Reports
+
+GET /reports/event-popularity → Returns events sorted by # of registrations.
+
+GET /reports/student-participation?student_id={id} → # of events attended by a student.
+
+GET /reports/attendance-summary?event_id={id} → Attendance percentage for an event.
+
+GET /reports/average-feedback?event_id={id} → Avg feedback score for an event.

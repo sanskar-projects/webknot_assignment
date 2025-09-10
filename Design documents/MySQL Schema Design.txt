@@ -1,0 +1,45 @@
+📊 MySQL Schema Design
+
+1. colleges
+college_id   INT AUTO_INCREMENT PRIMARY KEY  
+name         VARCHAR(255) NOT NULL  
+location     VARCHAR(255)
+
+2. students
+student_id   INT AUTO_INCREMENT PRIMARY KEY  
+college_id   INT NOT NULL  
+name         VARCHAR(255) NOT NULL  
+email        VARCHAR(255) UNIQUE NOT NULL  
+FOREIGN KEY (college_id) REFERENCES colleges(college_id)
+
+3. events
+event_id     INT AUTO_INCREMENT PRIMARY KEY  
+college_id   INT NOT NULL  
+title        VARCHAR(255) NOT NULL  
+event_type   ENUM('Workshop','Hackathon','Seminar','Fest')  
+date         DATE NOT NULL  
+description  TEXT  
+FOREIGN KEY (college_id) REFERENCES colleges(college_id)
+
+4. registrations
+registration_id  INT AUTO_INCREMENT PRIMARY KEY  
+student_id       INT NOT NULL  
+event_id         INT NOT NULL  
+registration_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP  
+UNIQUE(student_id, event_id) -- prevent duplicate registrations  
+FOREIGN KEY (student_id) REFERENCES students(student_id)  
+FOREIGN KEY (event_id) REFERENCES events(event_id)
+
+5. attendance
+attendance_id INT AUTO_INCREMENT PRIMARY KEY  
+registration_id INT NOT NULL  
+status         ENUM('Present','Absent') DEFAULT 'Absent'  
+checkin_time   TIMESTAMP NULL  
+FOREIGN KEY (registration_id) REFERENCES registrations(registration_id)
+
+6. feedback
+feedback_id   INT AUTO_INCREMENT PRIMARY KEY  
+registration_id INT NOT NULL  
+rating        INT CHECK (rating BETWEEN 1 AND 5)  
+comments      TEXT  
+FOREIGN KEY (registration_id) REFERENCES registrations(registration_id)
